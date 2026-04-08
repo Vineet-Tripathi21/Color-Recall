@@ -190,13 +190,15 @@ function updateGuessFromSliders() {
 
 function submitGuess() {
     // Very strict mathematically sound Euclidean color space distance
+    // Normalize differences to 0-1 range
     const dH = Math.min(Math.abs(targetHSV.h - guessHSV.h), 360 - Math.abs(targetHSV.h - guessHSV.h)) / 180;
     const dS = Math.abs(targetHSV.s - guessHSV.s) / 100;
     const dV = Math.abs(targetHSV.v - guessHSV.v) / 100;
     
-    // Heavily punish Hue mismatch since it defines the actual perceived color.
-    const dist = Math.sqrt(Math.pow(dH * 3, 2) + Math.pow(dS, 2) + Math.pow(dV, 2));
-    const maxDist = Math.sqrt(Math.pow(3, 2) + 1 + 1); // approx 3.316
+    // FIXED: INCREASED HUE WEIGHTING from 3x to 5x
+    // Hue is the most perceptually important color attribute - a hue shift is more noticeable than saturation or brightness
+    const dist = Math.sqrt(Math.pow(dH * 5, 2) + Math.pow(dS, 2) + Math.pow(dV, 2));
+    const maxDist = Math.sqrt(Math.pow(5, 2) + 1 + 1); // approx 5.099
     
     // Standard score out of 10. We use a power curve so colors that look visibly different score quite poorly (e.g. 3-5/10), 
     // rather than handing out a "60%" for a massive hue shift.
