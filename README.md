@@ -9,10 +9,10 @@ Your challenge is to **recreate it from memory** using Hue, Saturation, and Brig
 
 ## 🎮 How It Works
 
-* 👀 View a color (3–5 sec)
+* 👀 View a color (5 sec)
 * 🧠 Memorize its look
 * 🎛 Adjust HSB sliders to match it
-* 📊 Get a score (0–100%) based on accuracy
+* 📊 Get a score (0–10) based on accuracy
 
 ---
 
