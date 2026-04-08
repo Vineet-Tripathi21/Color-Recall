@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coloruno - Memory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="game-card" class="card">
+
+            <!-- Top Controls -->
+            <div class="top-row">
+                <div id="round-badge" class="round-text-plain hidden">
+                    <span id="round-text">1/5</span>
+                </div>
+            </div>
+
+            <!-- Views -->
+            <div id="home-view" class="view active">
+                <div class="home-content">
+
+                    <p>Recreate exact shades from memory.</p>
+                    <button id="start-btn" class="pill-btn primary-btn">Play Game</button>
+                </div>
+            </div>
+
+            <div id="memorize-view" class="view hidden">
+                <div class="bottom-area">
+                    <div class="bottom-left">
+                        <div class="memorize-label">MEMORIZE THIS SHADE</div>
+                        <div class="progress-track">
+                            <div id="timer-progress"></div>
+                        </div>
+                    </div>
+                    <div class="bottom-right">
+                        <div id="timer-text" class="timer-large">3.00</div>
+                        <div class="timer-sub">SECONDS LEFT</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guess-view" class="view hidden">
+                <div class="sliders-container">
+                    <div class="slider-group">
+                        <div class="slider-col" id="col-hue">
+                            <input type="range" class="rot-slider" id="hue-slider" min="0" max="360" value="180">
+                        </div>
+                        <div class="slider-col" id="col-sat">
+                            <input type="range" class="rot-slider" id="sat-slider" min="0" max="100" value="50">
+                        </div>
+                        <div class="slider-col" id="col-bri">
+                            <input type="range" class="rot-slider" id="bri-slider" min="0" max="100" value="50">
+                        </div>
+                    </div>
+                </div>
+                <!-- Sliders are absolute, this is the OK button -->
+                <button id="ok-btn" class="pill-btn ok-btn">OK</button>
+            </div>
+
+            <div id="round-result-view" class="view split-view hidden">
+                <div id="result-left-pane" class="split-pane">
+                    <div class="result-bottom-info">
+                        <span class="res-subtitle">YOUR SELECTION</span>
+                        <span id="res-guess-hsv" class="res-hsv">H113 S52 B60</span>
+                    </div>
+                </div>
+                <div id="result-right-pane" class="split-pane">
+                    <div class="result-top-info">
+                        <div id="round-score-text" class="score-huge">4.01</div>
+                        <div id="round-flavor-text" class="flavor-text">The read was there. The last stretch did the
+                            damage.</div>
+                    </div>
+                    <div class="result-bottom-info flex-between">
+                        <div>
+                            <span class="res-subtitle">ORIGINAL</span>
+                            <span id="res-target-hsv" class="res-hsv">H3 S32 B76</span>
+                        </div>
+                        <button id="next-round-btn" class="icon-btn-round" aria-label="Next Round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="final-result-view" class="view overlay-view hidden">
+                <div class="result-box final-box">
+                    <div class="score-label">GAME OVER</div>
+                    <div class="score-label">Average Score</div>
+                    <div id="final-score-text" class="score-large">9.24</div>
+                    <div class="action-row">
+                        <button id="play-again-btn" class="pill-btn primary-btn">Play Again</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
